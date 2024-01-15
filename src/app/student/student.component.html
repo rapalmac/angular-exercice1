@@ -1,0 +1,15 @@
+<h2>Students</h2>
+
+<form>
+    <div class="form-group">
+        <label>Student Code:</label>
+        <input type="text" name="studentCode" [(ngModel)]="studentModel.studentCode">
+    </div>
+    <div class="form-group">
+        <label>Student Name:</label>
+        <input type="text" name="studentName" [(ngModel)]="studentModel.studentName">
+    </div>    
+    <button (click)="onSaveForm(studentModel)">Save</button>
+</form>
+
+<app-table [headers]="['Code', 'Name']" [list]="studentList"/>

@@ -1,0 +1,21 @@
+<table>
+    <tr>
+        @for (header of headers; track $index) {
+            <th class="table-header">{{header}}</th>
+        }
+    </tr>
+
+    @for (item of modelList; track $index) {
+        <tr [ngClass]="{'table-row-even': $index % 2 == 0}">
+            @for (value of Object.values(item); track $index) {                
+                <td class="table-column even">{{ value }}</td>
+            }
+        </tr>
+    }
+
+    @empty {
+        <td class="table-column" [attr.colspan]="headers.length">
+            No records found.
+        </td>
+    }
+</table>
