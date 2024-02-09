@@ -1,10 +1,10 @@
 export class Student {
-    studentCode:string;
-    studentName:string;
+    code:string;
+    name:string;
 
     constructor() {
-        this.studentCode = "";
-        this.studentName = "";
+        this.code = "";
+        this.name = "";
     }
 }
 
@@ -13,13 +13,13 @@ export enum CourseLevel {
 }
 
 export class Course {
-    courseCode!:string;
-    courseName!:string;
-    courseDescription!:string;
-    courseLevel!:CourseLevel;
+    code!:string;
+    name!:string;
+    description!:string;
+    level!:CourseLevel;
 }
 
 export interface Project {
-    projectCode:string;
-    projectName:string;
+    code:string;
+    name:string;
 }

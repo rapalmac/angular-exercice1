@@ -1,19 +1,17 @@
-<h4>Welcome to the Angular Exercice 1</h4>
+<mat-toolbar color="primary">
+  <span>Angular Exercice</span>
+</mat-toolbar>
 
-<ul>
-  <li>
-    <a href="student/">Students</a>
-  </li>
-  <li>
-    <a href="course/">Courses</a>
-  </li>
-  <li>
-    <a href="project/">Projects</a>
-  </li>
-</ul>
-
-<app-student></app-student>
-<app-course></app-course>
-<app-project></app-project>
+<mat-tab-group>
+  <mat-tab label="Students">
+    <app-student></app-student>
+  </mat-tab>
+  <mat-tab label="Courses">
+    <app-course></app-course>
+  </mat-tab>
+  <mat-tab label="Projects">
+    <app-project></app-project>
+  </mat-tab>
+</mat-tab-group>
 
 <router-outlet></router-outlet>
