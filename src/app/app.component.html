@@ -1,17 +1,10 @@
 <mat-toolbar color="primary">
   <span>Angular Exercice</span>
+  <button mat-flat-button color="primary" routerLink="/students">Students</button>
+  <button mat-flat-button color="primary" routerLink="/courses">Courses</button>
+  <button mat-flat-button color="primary" routerLink="/projects">Projects</button>
+  <button mat-flat-button color="primary" routerLink="/student-by-course">Students by Courses</button>
+  <button mat-flat-button color="primary" routerLink="/student-by-project">Students by Projects</button>
 </mat-toolbar>
-
-<mat-tab-group>
-  <mat-tab label="Students">
-    <app-student></app-student>
-  </mat-tab>
-  <mat-tab label="Courses">
-    <app-course></app-course>
-  </mat-tab>
-  <mat-tab label="Projects">
-    <app-project></app-project>
-  </mat-tab>
-</mat-tab-group>
 
 <router-outlet></router-outlet>

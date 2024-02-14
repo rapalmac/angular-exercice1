@@ -1,7 +1,7 @@
-div.form-group {
-    margin-bottom: 5px;
+mat-toolbar button {
+    margin-left: 15px;
 }
 
-div.form-group label {
-    font-weight: bold;
+mat-toolbar  {
+    margin-bottom: 30px;
 }

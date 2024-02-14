@@ -1,0 +1,46 @@
+<section class="container">
+    
+    <form class="fx-column fx-center" [formGroup]="formGroup" (ngSubmit)="onFormSubmit()">
+        <h2>Students by course</h2>
+        <mat-form-field>
+            <mat-label>Course</mat-label>
+            <mat-select formControlName="course" (selectionChange)="onCourseChanges()">
+                @for (item of availableCourses; track item.code) {
+                    <mat-option [value]="item">{{item.code}} - {{item.name}}</mat-option>
+                }
+            </mat-select>
+            <mat-hint>Select a course</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Student</mat-label>
+            <mat-select formControlName="student">
+                @for (item of availableStudents; track item.code) {
+                    <mat-option [value]="item">{{item.code}} - {{item.name}}</mat-option>
+                }
+            </mat-select>
+            <mat-hint>Select an student</mat-hint>
+        </mat-form-field>
+
+        <div class="fx-row fx-right">
+            <button mat-raised-button color="primary" type="submit" >Enroll</button>
+        </div>
+    </form>
+
+
+    <h3 *ngIf="selectedProject">Enrolled students for: {{selectedProject.code}} - {{selectedProject.name}}</h3>
+    <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="code">
+            <th mat-header-cell *matHeaderCellDef> Code </th>
+            <td mat-cell *matCellDef="let course"> {{course.code}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let course"> {{course.name}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+    </table>
+</section>

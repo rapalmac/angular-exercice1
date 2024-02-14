@@ -17,9 +17,19 @@ export class Course {
     name!:string;
     description!:string;
     level!:CourseLevel;
+    students?:Student[];
+
+    constructor() {
+        this.students = [];
+    }
 }
 
-export interface Project {
-    code:string;
-    name:string;
+export class Project {
+    code!:string;
+    name!:string;
+    students?:Student[];
+
+    constructor() {
+        this.students = [];
+    }
 }

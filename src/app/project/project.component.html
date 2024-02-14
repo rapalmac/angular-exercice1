@@ -1,1 +1,55 @@
-<p>project works!</p>
+<section class="container">
+    <form #formEl="ngForm" [formGroup]="formGroup" (ngSubmit)="onSaveForm()" class="fx-column fx-center">
+        <h2>Projects</h2>
+        <mat-form-field>
+            <mat-label>Code</mat-label>
+            <input matInput type="text" id="code" name="code" placeholder="Code" 
+                formControlName="code">
+            <mat-hint>Project's unique code.</mat-hint>
+
+            <mat-error *ngIf="formGroup.get('code').hasError('required')">The code is required.</mat-error>
+            <mat-error *ngIf="formGroup.get('code').hasError('duplicated')">The code '{{formGroup.get('code').value}}' is duplicated.</mat-error>
+            <mat-error *ngIf="formGroup.get('code').hasError('minlength')">The code should be at least 4 caracters.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput type="text" id="name" name="name" 
+                placeholder="Name" formControlName="name">
+            <mat-hint>Project's full name.</mat-hint>
+
+            <mat-error *ngIf="formGroup.get('name').hasError('required')">The name is required.</mat-error>
+            <mat-error *ngIf="formGroup.get('code').hasError('minlength')">The name should be at least 4 caracters.</mat-error>
+        </mat-form-field>
+
+        <div class="fx-row fx-center">
+            <button mat-raised-button color="primary" type="submit" [disabled]="selection.isSelected() || !formGroup.valid">Save</button>
+            <button mat-raised-button color="primary" type="button" (click)="onUpdateForm()" [disabled]="!selection.isSelected() || !formGroup.valid">Update</button>
+            <button mat-raised-button type="button" (click)="onResetForm()">Reset</button>
+        </div>
+    </form>
+
+    <table mat-table #dataTable [dataSource]="dataSource">
+        <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef> Select </th>
+            <td mat-cell *matCellDef="let student">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? onSelectRow(student) : null"
+                            [checked]="tableSelection.isSelected(student)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+
+        <ng-container matColumnDef="code">
+            <th mat-header-cell *matHeaderCellDef> Code </th>
+            <td mat-cell *matCellDef="let student"> {{student.code}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let student"> {{student.name}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+    </table>
+</section>

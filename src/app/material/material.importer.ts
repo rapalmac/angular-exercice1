@@ -20,6 +20,7 @@ export function importMatComponents() {
 export function importAppHeaderComponents() {
     return [
         MatTab, MatTabBody, MatTabGroup, MatTabContent,
-        MatToolbar
+        MatToolbar,
+        MatButton
     ];
 }
